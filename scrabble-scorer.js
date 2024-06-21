@@ -47,7 +47,6 @@ function simpleScorer(word) {
    };
 
 function vowelBonusScorer(word) {
-   console.log("word vowel before", word)
    word = word.toUpperCase();
    vowel = ['A', 'E', 'I', 'O', 'U'];
    points = 0
@@ -63,7 +62,6 @@ function vowelBonusScorer(word) {
 
 function scrabbleScorer(word) {
    word = word.toLowerCase();
-   console.log('word before lower case', word)
    let points = 0;
 
    for (let i = 0; i < word.length; i++) {
@@ -99,8 +97,6 @@ const scoringAlgorithms = [
 let newPointStructure = transform(oldPointStructure);
 
 function scorerPrompt(num) {
-   inputWord = initialPrompt();
-
    console.log(`Which scoring algorithm would you like to use?\n`)
    
       for (item in scoringAlgorithms) {
@@ -109,7 +105,7 @@ function scorerPrompt(num) {
       }
        
       num = input.question(`Enter 0, 1, or 2: `)
-      console.log("Score for '" +inputWord+ "': ", scoringAlgorithms[num].scorerFunction(inputWord))
+      console.log("Score for '" +initialWord+ "': ", scoringAlgorithms[num].scorerFunction(initialWord))
       return num
    }
 }
@@ -127,7 +123,7 @@ function transform(arr) {
    };
 
 function runProgram() {
-   //initialPrompt();
+   initialPrompt();
    scorerPrompt();
   }
 
